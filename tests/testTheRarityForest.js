@@ -22,7 +22,7 @@ describe("theRarityForest", function () {
         await this.rarity.summon(4);
 
         await this.rarity.setVariable('level', {
-            1: 6
+            1: 2
         });
 
         await this.rarity.setVariable('xp', {
@@ -32,7 +32,7 @@ describe("theRarityForest", function () {
 
     it("Should start research successfully...", async function () {
         //summoner #0 => level 1, 0 xp
-        //summoner #1 => level 6, 15000 xp
+        //summoner #1 => level 2, 15000 xp
         await expect(this.theRarityForest.startResearch(0, 7)).to.be.reverted;
         await this.theRarityForest.startResearch(1, 7);
     });

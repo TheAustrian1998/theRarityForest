@@ -205,6 +205,14 @@ contract TheRarityForest is ERC721 {
         
     }
 
+    //Is owner of summoner or is approved
+    function _isApprovedOrOwnerOfSummoner(uint256 summonerId, address _owner) internal view virtual returns (bool) {
+        //_owner => expected owner
+        address spender = address(this);
+        address owner = rarityContract.ownerOf(summonerId);
+        return (owner == _owner || rarityContract.getApproved(summonerId) == spender || rarityContract.isApprovedForAll(owner, spender));
+    }
+
     //Mint a new ERC721
     function safeMint(address to) internal returns (uint256){
         uint256 counter = _tokenIdCounter.current();
@@ -241,9 +249,9 @@ contract TheRarityForest is ERC721 {
     function startResearch(uint256 summonerId, uint256 timeInDays) public returns (uint256) {
         //timeInDays -> time to research the forest
         require(timeInDays >= 4 && timeInDays <= 7, "not valid");
-        require(rarityContract.ownerOf(summonerId) == msg.sender, "not your summoner");
+        require(_isApprovedOrOwnerOfSummoner(summonerId, msg.sender), "not your summoner");
         (,,,uint256 summonerLevel) = rarityContract.summoner(summonerId);
-        require(summonerLevel > 5, "not level > 5");
+        require(summonerLevel >= 2, "not level >= 2");
         require(researchs[msg.sender][summonerId].timeInDays == 0 || researchs[msg.sender][summonerId].discovered == true, "not empty or not discovered yet"); //If empty or already discovered
         researchs[msg.sender][summonerId] = Research(timeInDays, block.timestamp, false, summonerId, msg.sender);
         emit ResearchStarted(summonerId, msg.sender);
@@ -269,7 +277,7 @@ contract TheRarityForest is ERC721 {
 
     //Level up an item, spending summoner XP (need approval)
     function levelUp(uint256 summonerId, uint256 tokenId) public {
-        require(ownerOf(tokenId) == msg.sender, "not your treasure");
+        require(_isApprovedOrOwnerOfSummoner(summonerId, msg.sender), "not your treasure");
         uint256 current = level[tokenId];
         rarityContract.spend_xp(summonerId, xpRequired(current));
         level[tokenId] += 1;
