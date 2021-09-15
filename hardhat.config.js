@@ -22,5 +22,8 @@ module.exports = {
   },
   etherscan: {
     apiKey: ftmscanApiKey
+  },
+  gasReporter: {
+    excludeContracts: ["rarity.sol", "theRarityForest.sol", "ERC721.sol"]
   }
 };
