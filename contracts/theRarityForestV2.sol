@@ -173,6 +173,13 @@ contract TheRarityForestV2 is ERC721Enumerable {
         uint256 endBlockTs; //Block when research will end
     }
 
+    struct Treasure {
+        uint256 summonerId;
+        string itemName;
+        uint256 magic;
+        uint256 level;
+    }
+
     //Gen random
     function _random(string memory input) internal pure returns (uint256) {
         return uint256(keccak256(abi.encodePacked(input)));
@@ -292,13 +299,14 @@ contract TheRarityForestV2 is ERC721Enumerable {
     }
 
     //Get all treasures by summoner (adventurer)
-    function getTreasuresBySummoner(uint256 summonerId) public view returns (uint256[] memory) {
+    function getTreasuresBySummoner(uint256 summonerId) public view returns (Treasure[] memory) {
         require(summonerId != uint(0), "cannot retrieve zero address");
         uint256 arrayLength = balanceOf(summonerId);
-        uint256[] memory _treasures = new uint256[](arrayLength);
+        Treasure[] memory _treasures = new Treasure[](arrayLength);
         for (uint256 i = 0; i < arrayLength; i++) {
             uint256 tokenId = tokenOfOwnerByIndex(summonerId, i);
-            _treasures[i] = (tokenId);
+            (uint256 _summonerId, string memory _itemName, uint _magic, uint _level) = treasure(tokenId);
+            _treasures[i] = Treasure(_summonerId, _itemName, _magic, _level);
         }
         return _treasures;
     }
@@ -321,7 +329,7 @@ contract TheRarityForestV2 is ERC721Enumerable {
     }
 
     //View your treasure
-    function treasure(uint tokenId) external view returns (uint256 _summonerId, string memory _itemName, uint _magic, uint _level) {
+    function treasure(uint tokenId) public view returns (uint256 _summonerId, string memory _itemName, uint _magic, uint _level) {
         _summonerId = ownerOf(tokenId);
         _itemName = items[tokenId];
         _magic = magic[tokenId];
