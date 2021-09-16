@@ -41,7 +41,11 @@ interface IERC721 {
 contract ERC721 is IERC721 {
     using Strings for uint256;
 
-    IRarity constant rm = IRarity(0xce761D788DF608BD21bdd59d6f4B54b2e27F25Bb);
+    constructor(address _rarityAddr){
+        rm = IRarity(_rarityAddr);
+    }
+
+    IRarity public rm;
 
     mapping(uint256 => uint) private _owners;
     mapping(uint => uint256) private _balances;
@@ -66,7 +70,6 @@ contract ERC721 is IERC721 {
     function approve(uint from, uint to, uint256 tokenId) public virtual override {
         uint owner = ERC721.ownerOf(tokenId);
         require(_isApprovedOrOwnerOfSummoner(from), "not owner of summoner");
-        require(to != owner, "ERC721: approval to current owner");
 
         require(
             from == owner || isApprovedForAll(owner, from),

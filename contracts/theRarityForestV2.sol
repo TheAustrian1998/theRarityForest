@@ -72,7 +72,7 @@ contract TheRarityForestV2 is ERC721Enumerable {
     using Counters for Counters.Counter;
     using Strings for uint256;
 
-    constructor(address _rarityAddr, address _rarityForestAddr) {
+    constructor(address _rarityAddr, address _rarityForestAddr) ERC721(_rarityAddr) {
         rarityContract = IRarity(_rarityAddr);
         rarityForestContract = ITheRarityForest(_rarityForestAddr);
     }
@@ -80,8 +80,8 @@ contract TheRarityForestV2 is ERC721Enumerable {
     IRarity public rarityContract;
     ITheRarityForest public rarityForestContract;
     uint256 private globalSeed;
-    string constant name = "TheRarityForestV2";
-    string constant symbol = "TRFv2";
+    string constant public name = "TheRarityForestV2";
+    string constant public symbol = "TRFv2";
     mapping(uint256 => Research) researchs; //summonerId => Research
     mapping(uint256 => string) items;
     mapping(uint256 => uint256) magic;
@@ -195,7 +195,15 @@ contract TheRarityForestV2 is ERC721Enumerable {
 
     //Get random treasure
     function _randomTreasure(Research memory research) internal returns (string memory _itemName, uint256 _magic, uint256 _level) {
-        string memory _string = string(abi.encodePacked(research.summonerId, abi.encodePacked(research.owner), abi.encodePacked(research.initBlockTs), abi.encodePacked(globalSeed)));
+        string memory _string = string(
+            abi.encodePacked(
+                research.summonerId, 
+                research.owner, 
+                research.initBlockTs, 
+                globalSeed,
+                block.timestamp
+            )
+        );
         uint256 index = _random(_string);
         globalSeed = index;
 
@@ -273,6 +281,7 @@ contract TheRarityForestV2 is ERC721Enumerable {
     //Discover a treasure
     function discover(uint256 summonerId) public returns (uint256) {
         Research memory research = researchs[summonerId];
+        require(_isApprovedOrOwnerOfSummoner(summonerId, msg.sender), "not your summoner");
         require(!research.discovered, "already discovered");
         require(research.timeInDays > 0, "not initialized");
         require(research.endBlockTs < block.timestamp, "not finish yet");
