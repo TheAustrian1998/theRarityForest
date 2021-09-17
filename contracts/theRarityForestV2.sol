@@ -175,6 +175,7 @@ contract TheRarityForestV2 is ERC721Enumerable {
 
     struct Treasure {
         uint256 summonerId;
+        uint256 treasureId;
         string itemName;
         uint256 magic;
         uint256 level;
@@ -315,7 +316,7 @@ contract TheRarityForestV2 is ERC721Enumerable {
         for (uint256 i = 0; i < arrayLength; i++) {
             uint256 tokenId = tokenOfOwnerByIndex(summonerId, i);
             (uint256 _summonerId, string memory _itemName, uint _magic, uint _level) = treasure(tokenId);
-            _treasures[i] = Treasure(_summonerId, _itemName, _magic, _level);
+            _treasures[i] = Treasure(_summonerId, tokenId ,_itemName, _magic, _level);
         }
         return _treasures;
     }
