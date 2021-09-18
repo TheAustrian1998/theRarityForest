@@ -1,6 +1,9 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-etherscan");
 require("hardhat-gas-reporter");
+require("./tasks/treasuresV1.js");
+require("./tasks/treasuresV2.js");
+
 let { privateKey, alchemyUrl, ftmscanApiKey } = require("./secrets.json");
 
 module.exports = {
