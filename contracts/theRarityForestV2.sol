@@ -157,7 +157,10 @@ contract TheRarityForestV2 is ERC721Enumerable {
         "Mutant fisheye",
         "Wolf necklace",
         "Shadowy rabbit paw",
-        "Paladin eye"
+        "Paladin eye",
+        "Red Tanned Gloves",
+        "Paladin heart",
+        "Cat Claw glove"
     ];
 
     event ResearchStarted(uint256 summonerId, uint256 initBlockTs, uint256 endBlockTs, uint256 timeInDays);
