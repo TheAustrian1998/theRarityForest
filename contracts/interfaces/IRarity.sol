@@ -7,4 +7,6 @@ interface IRarity {
     function spend_xp(uint _summoner, uint _xp) external;
     function getApproved(uint256 tokenId) external view returns (address);
     function isApprovedForAll(address owner, address operator) external view returns (bool);
+    function next_summoner() external view returns (uint);
+    function summon(uint _class) external;
 }
