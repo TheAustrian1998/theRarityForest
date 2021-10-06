@@ -245,10 +245,10 @@ contract codex {
 		string memory description
 	) {
 		id = 12;
-		name = "The anatomy of an elf, the trophy of his assassin.";
+		name = "Elf skull";
 		cost = 1e18;
 		weight = 1;
-		description = "";
+		description = "The anatomy of an elf, the trophy of his assassin";
 	}
 	
 	function war_book() public pure returns (
