@@ -15,13 +15,7 @@ contract codex {
 		} else if (_id == 4) {
 			return "Ring";
 		} else if (_id == 5) {
-			return "Talisman";
-		} else if (_id == 6) {
 			return "Belt";
-		} else if (_id == 7) {
-			return "Earring";
-		} else if (_id == 8) {
-			return "Charm";
 		}
 	}
     
@@ -109,7 +103,7 @@ contract codex {
 		_jewel.name = "Cursed talisman";
 		_jewel.id = 6;
 		_jewel.cost = 6e18;
-		_jewel.part_type = 5;
+		_jewel.part_type = 1;
 		_jewel.weight = 1;
 		_jewel.description = "When it was not enchanted it gave lucky, now it only gives death.";
 	}
@@ -127,7 +121,7 @@ contract codex {
 		_jewel.name = "Enchanted talisman";
 		_jewel.id = 8;
 		_jewel.cost = 6e18;
-		_jewel.part_type = 5;
+		_jewel.part_type = 1;
 		_jewel.weight = 1;
 		_jewel.description = "When it was not enchanted it gave luck, now it only gives death.";
 	}
@@ -136,7 +130,7 @@ contract codex {
 		_jewel.name = "Time crystal";
 		_jewel.id = 9;
 		_jewel.cost = 6e18;
-		_jewel.part_type = 8;
+		_jewel.part_type = 1;
 		_jewel.weight = 1;
 		_jewel.description = "If the former owner of this crystal could go back in time, he would surely avoid losing it.";
 	}
