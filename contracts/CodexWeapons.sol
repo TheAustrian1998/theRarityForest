@@ -75,11 +75,11 @@ contract codex {
     function black_gauntlet() public pure returns (weapon memory _weapon) {
         _weapon.id = 1;
         _weapon.name = "Black gauntlet";
-        _weapon.cost = 2e18;
+        _weapon.cost = 400e18;
         _weapon.proficiency = 1;
         _weapon.encumbrance = 1;
         _weapon.damage_type = 1;
-        _weapon.weight = 1;
+        _weapon.weight = 2;
         _weapon.damage = 3;
         _weapon.critical = 2;
         _weapon.critical_modifier = 0;
@@ -90,7 +90,7 @@ contract codex {
     function silver_sword() public pure returns (weapon memory _weapon) {
         _weapon.id = 2;
         _weapon.name = "Silver sword";
-        _weapon.cost = 10e18;
+        _weapon.cost = 600e18;
         _weapon.proficiency = 2;
         _weapon.encumbrance = 2;
         _weapon.damage_type = 2;
@@ -105,7 +105,7 @@ contract codex {
     function ancient_prince_andre_s_sword() public pure returns (weapon memory _weapon) {
         _weapon.id = 3;
         _weapon.name = "Ancient Prince Andre's Sword";
-        _weapon.cost = 35e18;
+        _weapon.cost = 60000e18;
         _weapon.proficiency = 3;
         _weapon.encumbrance = 3;
         _weapon.damage_type = 3;
@@ -120,10 +120,10 @@ contract codex {
     function mechanical_hand() public pure returns (weapon memory _weapon) {
         _weapon.id = 4;
         _weapon.name = "Mechanical hand";
-        _weapon.cost = 5e18;
+        _weapon.cost = 750e18;
         _weapon.proficiency = 1;
         _weapon.encumbrance = 2;
-        _weapon.damage_type = 2;
+        _weapon.damage_type = 1;
         _weapon.weight = 1;
         _weapon.damage = 4;
         _weapon.critical = 2;
@@ -135,10 +135,10 @@ contract codex {
     function king_s_son_sword() public pure returns (weapon memory _weapon) {
         _weapon.id = 5;
         _weapon.name = "King's son sword";
-        _weapon.cost = 10e18;
+        _weapon.cost = 800e18;
         _weapon.proficiency = 2;
         _weapon.encumbrance = 2;
-        _weapon.damage_type = 2;
+        _weapon.damage_type = 3;
         _weapon.weight = 2;
         _weapon.damage = 6;
         _weapon.critical = 2;
@@ -165,7 +165,7 @@ contract codex {
     function old_farmer_sickle() public pure returns (weapon memory _weapon) {
         _weapon.id = 7;
         _weapon.name = "Old farmer sickle";
-        _weapon.cost = 6e18;
+        _weapon.cost = 25e18;
         _weapon.proficiency = 1;
         _weapon.encumbrance = 2;
         _weapon.damage_type = 3;
