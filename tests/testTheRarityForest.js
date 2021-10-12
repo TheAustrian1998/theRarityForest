@@ -41,7 +41,7 @@ describe("ERC721", function () {
         //anotherSigner config
         await this.rarity.connect(this.anotherSigner).summon(5);
         await this.rarity.connect(this.anotherSigner).summon(4);
-        
+
         await this.rarity.setVariable('level', {
             //Level up
             3: 2
@@ -58,25 +58,99 @@ describe("ERC721", function () {
         await this.theRarityForestV2.connect(this.anotherSigner).discover(3);
     });
 
-    it("approve...", async function(){
+    it("approve...", async function () {
         //Not owner, must revert
-        await expect(this.theRarityForestV2.connect(this.anotherSigner).approve(3,1,0)).to.be.reverted;
+        await expect(this.theRarityForestV2.connect(this.anotherSigner).approve(3, 1, 0)).to.be.reverted;
         //Owner, must approve
-        await this.theRarityForestV2.connect(this.deployerSigner).approve(1,3,0);
+        await this.theRarityForestV2.connect(this.deployerSigner).approve(1, 3, 0);
     });
 
-    it("setApprovalForAll...", async function(){
+    it("setApprovalForAll...", async function () {
         //Not owner, must revert
-        await expect(this.theRarityForestV2.connect(this.anotherSigner).setApprovalForAll(1,3,true)).to.be.reverted;
+        await expect(this.theRarityForestV2.connect(this.anotherSigner).setApprovalForAll(1, 3, true)).to.be.reverted;
         //Owner, must approve
-        await this.theRarityForestV2.connect(this.deployerSigner).setApprovalForAll(1,3,true);
+        await this.theRarityForestV2.connect(this.deployerSigner).setApprovalForAll(1, 3, true);
     });
 
-    it("safeTransferFrom...", async function(){
+    it("safeTransferFrom...", async function () {
         //Not owner, must revert
-        await expect(this.theRarityForestV2.connect(this.anotherSigner).transferFrom(3,1,0)).to.be.reverted;
+        await expect(this.theRarityForestV2.connect(this.anotherSigner).transferFrom(3, 1, 0)).to.be.reverted;
         //Owner, must approve
-        await this.theRarityForestV2.connect(this.deployerSigner).transferFrom(1,3,0);
+        await this.theRarityForestV2.connect(this.deployerSigner).transferFrom(1, 3, 0);
+    });
+});
+
+describe("ERC721 Fixed", function () {
+    before(async function () {
+        //Preparing the env
+        [this.deployerSigner, this.anotherSigner] = await ethers.getSigners();
+
+        //Mock rarity
+        this.Rarity = await smock.mock('rarity');
+        this.rarity = await this.Rarity.deploy();
+
+        //Deploy V3
+        this.TheRarityForestV3 = await ethers.getContractFactory("TheRarityForestV3");
+        this.theRarityForestV3 = await this.TheRarityForestV3.deploy(this.rarity.address, ethers.constants.AddressZero, ethers.constants.AddressZero, ethers.constants.AddressZero);
+        await this.theRarityForestV3.deployed();
+
+        //deployerSigner config
+        await this.rarity.connect(this.deployerSigner).summon(5); //#0
+        await this.rarity.connect(this.deployerSigner).summon(4); //#1
+
+        await this.rarity.setVariable('level', {
+            //Level up
+            1: 2
+        });
+
+        await this.rarity.setVariable('xp', {
+            //XP up
+            1: ethers.utils.parseUnits("1500000")
+        });
+
+        await this.theRarityForestV3.connect(this.deployerSigner).startResearch(1, 4);
+        await network.provider.send("evm_increaseTime", [691200]);
+        await this.theRarityForestV3.connect(this.deployerSigner).discover(1);
+
+        //anotherSigner config
+        await this.rarity.connect(this.anotherSigner).summon(5); //#2
+        await this.rarity.connect(this.anotherSigner).summon(4); //#3
+
+        await this.rarity.setVariable('level', {
+            //Level up
+            3: 2
+        });
+
+        await this.rarity.setVariable('xp', {
+            //XP up
+            3: ethers.utils.parseUnits("1500000")
+        });
+
+        //Mint a treasure in V3
+        await this.theRarityForestV3.connect(this.deployerSigner).startResearch(1, 4);
+        await network.provider.send("evm_increaseTime", [691200]);
+        await this.theRarityForestV3.connect(this.deployerSigner).discover(1);
+    });
+
+    it("approve...", async function () {
+        //Not owner, must revert
+        await expect(this.theRarityForestV3.connect(this.anotherSigner).approve(3, 1, 0)).to.be.reverted;
+        //Owner, must approve
+        await this.theRarityForestV3.connect(this.deployerSigner).approve(1, 3, 0);
+    });
+
+    it("setApprovalForAll...", async function () {
+        //Not owner, must revert
+        await expect(this.theRarityForestV3.connect(this.anotherSigner).setApprovalForAll(1, 3, true)).to.be.reverted;
+        //Owner, must approve
+        await this.theRarityForestV3.connect(this.deployerSigner).setApprovalForAll(1, 3, true);
+    });
+
+    it("transferFrom...", async function () {
+        //Not owner, must revert
+        await expect(this.theRarityForestV3.connect(this.anotherSigner).transferFrom(3, 3, 1, 0)).to.be.reverted;
+        //Owner, must approve
+        await this.theRarityForestV3.connect(this.deployerSigner).transferFrom(3, 1, 3, 0);
     });
 });
 
@@ -153,21 +227,21 @@ describe("theRarityForestV2", function () {
         expect(Number(levelAfter)).equal(Number(levelBefore) + 1);
     });
 
-    it("Should restore a treasure successfully...", async function(){
+    it("Should restore a treasure successfully...", async function () {
         await this.theRarityForest.approve(this.theRarityForestV2.address, 0);
         await this.theRarityForestV2.restoreTreasure(0, 1);
         expect("0x000000000000000000000000000000000000dEaD").equal(await this.theRarityForest.ownerOf(0));
     });
 
-    it("Get treasures by summoner...", async function(){
+    it("Get treasures by summoner...", async function () {
         let arr = await this.theRarityForestV2.getTreasuresBySummoner(1);
         arr = arr.map((n) => {
-            console.log("-summoner#", ethers.utils.formatUnits(n.summonerId, "wei"), "\n-itemName:",n.itemName, "\n-magic:",ethers.utils.formatUnits(n.magic, "wei"),"\n-level:",ethers.utils.formatUnits(n.level, "wei"));
+            console.log("-summoner#", ethers.utils.formatUnits(n.summonerId, "wei"), "\n-itemName:", n.itemName, "\n-magic:", ethers.utils.formatUnits(n.magic, "wei"), "\n-level:", ethers.utils.formatUnits(n.level, "wei"));
             console.log("\n");
         });
     });
 
-    it("Get researches by summoner...", async function(){
+    it("Get researches by summoner...", async function () {
         let res = await this.theRarityForestV2.getResearchBySummoner(1);
         console.log("-timeInDays:", ethers.utils.formatUnits(res.timeInDays, "wei"), "\n-initBlockTs:", ethers.utils.formatUnits(res.initBlockTs, "wei"), "\n-endBlockTs:", ethers.utils.formatUnits(res.endBlockTs, "wei"));
     });
