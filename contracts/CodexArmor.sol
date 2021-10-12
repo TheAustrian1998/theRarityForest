@@ -52,7 +52,7 @@ contract codex {
     ) {
         id = 1;
         name = "Haunted cloak";
-        cost = 5e18;
+        cost = 560e18;
         proficiency = 1;
         weight = 10;
         armor_bonus = 1;
@@ -76,7 +76,7 @@ contract codex {
     ) {
         id = 2;
         name = "Dead hero cape";
-        cost = 1e18;
+        cost = 790e18;
         proficiency = 1;
         weight = 5;
         armor_bonus = 1;

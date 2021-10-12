@@ -92,8 +92,8 @@ contract codex {
 	) {
 		id = 1;
 		name = "Dead King crown";
-		cost = 1e18;
-		weight = 1;
+		cost = 60e18;
+		weight = 2;
 		description = "Once was a king, his name was lost but not his crown.";
 	}
 	
@@ -106,7 +106,7 @@ contract codex {
 	) {
 		id = 2;
 		name = "Ancient book";
-		cost = 1e18;
+		cost = 45e18;
 		weight = 1;
 		description = "The forest has a lot of stories, not as many as this book.";
 	}
@@ -120,7 +120,7 @@ contract codex {
 	) {
 		id = 3;
 		name = "Enchanted book";
-		cost = 1e18;
+		cost = 250e18;
 		weight = 1;
 		description = "I wouldn't take it if I was you ...";
 	}
@@ -134,7 +134,7 @@ contract codex {
 	) {
 		id = 4;
 		name = "Treasure map";
-		cost = 1e18;
+		cost = 99e18;
 		weight = 1;
 		description = "Where does it lead? to the rarest destiny.";
 	}
@@ -148,7 +148,7 @@ contract codex {
 	) {
 		id = 5;
 		name = "Spell book";
-		cost = 1e18;
+		cost = 700e18;
 		weight = 1;
 		description = "Beware! can cast a spell on you.";
 	}
@@ -176,8 +176,8 @@ contract codex {
 	) {
 		id = 7;
 		name = "Dragon egg";
-		cost = 1e18;
-		weight = 1;
+		cost = 500e18;
+		weight = 4;
 		description = "The perfect pet.";
 	}
 	
@@ -190,8 +190,8 @@ contract codex {
 	) {
 		id = 8;
 		name = "War helmet";
-		cost = 1e18;
-		weight = 1;
+		cost = 750e18;
+		weight = 2;
 		description = "Survived the battle, not as its former carrier.";
 	}
 	
@@ -204,7 +204,7 @@ contract codex {
 	) {
 		id = 9;
 		name = "Fire boots";
-		cost = 1e18;
+		cost = 4500e18;
 		weight = 1;
 		description = "The God of Fire created these. Only a cold soul could carry them.";
 	}
@@ -218,7 +218,7 @@ contract codex {
 	) {
 		id = 10;
 		name = "Enchanted useless tool";
-		cost = 1e18;
+		cost = 1400e18;
 		weight = 1;
 		description = "Very promising, but useless.";
 	}
@@ -232,8 +232,8 @@ contract codex {
 	) {
 		id = 11;
 		name = "War trophy";
-		cost = 1e18;
-		weight = 1;
+		cost = 99e18;
+		weight = 3;
 		description = "A war where too much was lost.";
 	}
 	
@@ -246,7 +246,7 @@ contract codex {
 	) {
 		id = 12;
 		name = "Elf skull";
-		cost = 1e18;
+		cost = 450e18;
 		weight = 1;
 		description = "The anatomy of an elf, the trophy of his assassin";
 	}
@@ -260,7 +260,7 @@ contract codex {
 	) {
 		id = 13;
 		name = "War book";
-		cost = 1e18;
+		cost = 35e18;
 		weight = 1;
 		description = "How to start a war, how to bury your soldier friends...";
 	}
@@ -274,8 +274,8 @@ contract codex {
 	) {
 		id = 14;
 		name = "Gold pot";
-		cost = 1e18;
-		weight = 1;
+		cost = 99e18;
+		weight = 4;
 		description = "The temptation to put coin inside is hard to resist";
 	}
 	
@@ -288,8 +288,8 @@ contract codex {
 	) {
 		id = 15;
 		name = "Demon head";
-		cost = 1e18;
-		weight = 1;
+		cost = 420e18;
+		weight = 3;
 		description = "Shadowy figure, now headless.";
 	}
 	
@@ -302,7 +302,7 @@ contract codex {
 	) {
 		id = 16;
 		name = "Unknown key";
-		cost = 1e18;
+		cost = 69e18;
 		weight = 1;
 		description = "Whatever this may open, it's a complete mystery.";
 	}
@@ -316,7 +316,7 @@ contract codex {
 	) {
 		id = 17;
 		name = "Cursed book";
-		cost = 1e18;
+		cost = 15000e18;
 		weight = 1;
 		description = "An ancient enchantment. Whoever reads this will be forgotten forever.";
 	}
@@ -330,8 +330,8 @@ contract codex {
 	) {
 		id = 18;
 		name = "Giant plant seed";
-		cost = 1e18;
-		weight = 1;
+		cost = 400e18;
+		weight = 2;
 		description = "Little like a bug, tall like the sky.";
 	}
 
@@ -345,7 +345,7 @@ contract codex {
 	) {
 		id = 19;
 		name = "Bear claw";
-		cost = 1e18;
+		cost = 65e18;
 		weight = 1;
 		description = "Now, you can claim you survived a Bear.";
 	}
@@ -359,7 +359,7 @@ contract codex {
 	) {
 		id = 20;
 		name = "Glove with diamonds";
-		cost = 1e18;
+		cost = 990e18;
 		weight = 1;
 		description = "Glamor is just one of its characteristics.";
 	}
@@ -373,7 +373,7 @@ contract codex {
 	) {
 		id = 21;
 		name = "Warrior watch";
-		cost = 1e18;
+		cost = 75e18;
 		weight = 1;
 		description = "A warrior never has enough time.";
 	}
@@ -387,7 +387,7 @@ contract codex {
 	) {
 		id = 22;
 		name = "Paladin eye";
-		cost = 1e18;
+		cost = 462e18;
 		weight = 1;
 		description = "Do not lose sight of it, it could be useful for its owner.";
 	}
@@ -401,8 +401,8 @@ contract codex {
 	) {
 		id = 23;
 		name = "Metal horse saddle";
-		cost = 1e18;
-		weight = 1;
+		cost = 150e18;
+		weight = 5;
 		description = "Now you only need a horse.";
 	}
 	
@@ -415,7 +415,7 @@ contract codex {
 	) {
 		id = 24;
 		name = "Witcher book";
-		cost = 1e18;
+		cost = 700e18;
 		weight = 1;
 		description = "Magic, spells, enchantments. Everything in your hand.";
 	}
@@ -429,7 +429,7 @@ contract codex {
 	) {
 		id = 25;
 		name = "Witch book";
-		cost = 1e18;
+		cost = 750e18;
 		weight = 1;
 		description = "Shady secrets, nobody should see it.";
 	}
@@ -443,7 +443,7 @@ contract codex {
 	) {
 		id = 26;
 		name = "Unknown animal ey";
-		cost = 1e18;
+		cost = 300e18;
 		weight = 1;
 		description = "From a beast, or a pet, a monster or a bunny.";
 	}
@@ -457,7 +457,7 @@ contract codex {
 	) {
 		id = 27;
 		name = "Shadowy rabbit paw";
-		cost = 1e18;
+		cost = 366e18;
 		weight = 1;
 		description = "A one-legged rabbit is still a rabbit.";
 	}
@@ -471,7 +471,7 @@ contract codex {
 	) {
 		id = 28;
 		name = "Red Tanned Gloves";
-		cost = 1e18;
+		cost = 45e18;
 		weight = 1;
 		description = "Were these tanned with blood? No one can know.";
 	}
@@ -485,7 +485,7 @@ contract codex {
 	) {
 		id = 29;
 		name = "Paladin heart";
-		cost = 1e18;
+		cost = 400e18;
 		weight = 1;
 		description = "Filled with Valor, glory, but most important, Alturisum";
 	}
@@ -499,7 +499,7 @@ contract codex {
 	) {
 		id = 30;
 		name = "Cat Claw glove";
-		cost = 1e18;
+		cost = 550e18;
 		weight = 1;
 		description = "Which feline was the owner of such claws? Matters not. You may wear don them now.";
 	}
@@ -513,7 +513,7 @@ contract codex {
 	) {
 		id = 31;
 		name = "Skull fragment";
-		cost = 1e18;
+		cost = 601e18;
 		weight = 1;
 		description = "A puzzle to solve. What did the former owner of this head think?";
 	}
@@ -527,7 +527,7 @@ contract codex {
 	) {
 		id = 32;
 		name = "Hawk eye";
-		cost = 1e18;
+		cost = 300e18;
 		weight = 1;
 		description = "It gives you precision. In your decisions and in your shots.";
 	}
@@ -541,8 +541,8 @@ contract codex {
 	) {
 		id = 33;
 		name = "Meteorite fragment";
-		cost = 1e18;
-		weight = 1;
+		cost = 570e18;
+		weight = 2;
 		description = "Unknown alien power.";
 	}
 	
@@ -555,7 +555,7 @@ contract codex {
 	) {
 		id = 34;
 		name = "Mutant fisheye";
-		cost = 1e18;
+		cost = 379e18;
 		weight = 1;
 		description = "The sea is very strange...";
 	}
